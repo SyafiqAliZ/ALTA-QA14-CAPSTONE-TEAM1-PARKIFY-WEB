@@ -19,10 +19,22 @@ public class DashboardPage {
 
     @FindBy(xpath = "//div[@class='h-full w-full relative']")
     private WebElement verifyDashboard;
+    @FindBy(css = ".lucide-plus")
+    private WebElement buttonPlus;
+    @FindBy(xpath = "//a[.='Profile']")
+    private WebElement buttonProfile;
 
     public boolean verifyDashboard(){
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='h-full w-full relative']")));
         return verifyDashboard.isDisplayed();
+    }
+    public void clickPlusButton(){
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".lucide-plus")));
+        buttonPlus.click();
+    }
+    public void clickProfileButton(){
+        buttonProfile.click();
     }
 }
